@@ -72,6 +72,14 @@ function filtered() {
     if (q && !(v.v.toLowerCase().includes(q) || v.a.toLowerCase().includes(q))) return false;
     return true;
   });
+  if (q) {
+    out.sort((a, b) => {
+      const sa = a.v.toLowerCase().startsWith(q) ? 0 : 1;
+      const sb = b.v.toLowerCase().startsWith(q) ? 0 : 1;
+      return sa - sb || (state.dir === "desc" ? b.d.localeCompare(a.d) : a.d.localeCompare(b.d));
+    });
+    return out;
+  }
   out.sort((a, b) => state.dir === "desc" ? b.d.localeCompare(a.d) || b.a.length - a.a.length : a.d.localeCompare(b.d) || a.a.length - b.a.length);
   return out;
 }
