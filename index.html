@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MC 版本库 · 基岩版 / 网易版历史版本</title>
+<meta name="description" content="国际基岩版 800 个历史版本，ARMv7 / ARMv8 双架构下载；网易中国版当前官方包与版本时间线。">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1114'/%3E%3Crect x='6' y='6' width='9' height='9' fill='%2356d364'/%3E%3Crect x='17' y='6' width='9' height='9' fill='%2338d6c8'/%3E%3Crect x='6' y='17' width='9' height='9' fill='%2338d6c8'/%3E%3Crect x='17' y='17' width='9' height='9' fill='%2356d364'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+      <rect x="3" y="3" width="12" height="12" fill="#56d364"/>
+      <rect x="17" y="3" width="12" height="12" fill="#38d6c8"/>
+      <rect x="3" y="17" width="12" height="12" fill="#38d6c8"/>
+      <rect x="17" y="17" width="12" height="12" fill="#56d364"/>
+    </svg>
+    <div>
+      <b>MC 版本库</b>
+      <span>BEDROCK · CHINA EDITION ARCHIVE</span>
+    </div>
+  </div>
+  <nav class="tabs" id="tabs">
+    <button class="tab on" data-tab="intl">国际基岩版</button>
+    <button class="tab" data-tab="netease">网易中国版</button>
+    <button class="tab" data-tab="wiki">维基入口</button>
+  </nav>
+  <div class="engine" id="engine"><i></i>检测中</div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="kicker">VERSION ARCHIVE · 0.1.0 → 26.62</div>
+    <h1>所有 <em>基岩版</em> 历史版本<br>按版本号直接下</h1>
+    <p>国际版 800 个安装包，含正式版与测试版，ARMv7 / ARMv8 双架构，多个网盘镜像可换。网易中国版官方只留最新包，历史包实测已失效，页里写清哪条路还能走。</p>
+    <div class="stats">
+      <div><b id="stTotal">0</b><span>国际版本</span></div>
+      <div><b id="stStable">0</b><span>正式版</span></div>
+      <div><b id="stBeta">0</b><span>测试版</span></div>
+      <div><b id="stRange">—</b><span>覆盖范围</span></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-intl">
+    <div class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2"/></svg>
+        <input id="q" type="search" placeholder="搜版本号，例如 1.20.81 / 26.62" autocomplete="off">
+      </div>
+      <div class="mirror">
+        <span class="m-label">镜像</span>
+        <div class="chips" id="mirrorChips">
+          <button class="chip on" data-m="123云盘">123云盘</button>
+          <button class="chip" data-m="OneDrive">OneDrive</button>
+          <button class="chip" data-m="夸克网盘">夸克网盘</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="filters">
+      <div class="chips" id="typeChips">
+        <button class="chip on" data-t="all">全部</button>
+        <button class="chip" data-t="0">正式版</button>
+        <button class="chip" data-t="1">测试版</button>
+      </div>
+      <div class="chips majors" id="majorChips"></div>
+      <button class="sortbtn" id="sort" data-dir="desc">最新在前 ↓</button>
+    </div>
+
+    <div class="list" id="list"></div>
+    <button class="more" id="more" hidden>再加载 120 个</button>
+    <p class="empty" id="empty" hidden>没有匹配的版本，换个关键词试试。</p>
+  </section>
+
+  <section class="view" id="view-netease" hidden>
+    <div class="nsec">
+      <h2>官方现在能下的包</h2>
+      <p class="sub">数据来自网易更新接口，最近同步 <span id="neTime">—</span>。</p>
+      <div class="ngrid" id="neNow"></div>
+    </div>
+
+    <div class="nsec">
+      <h2>历史版本：实话实说</h2>
+      <div class="nbox">
+        <p><b>官方没有历史包下载入口。</b>官网 <a href="https://mc.163.com/" target="_blank" rel="noopener">mc.163.com</a> 只放当前版本，旧包的 CDN 直链（形如 <code>g79.gdl.netease.com/…1.11.0.55312.apk</code>）实测返回 403，已经不能直接下。</p>
+        <p>所以网易版的历史包只能走存档这条路，可用的入口有：</p>
+        <ul>
+          <li><a href="https://www.i4.cn/" target="_blank" rel="noopener">爱思助手</a>：iPhone 插线连电脑，搜「我的世界」，历史版本里能翻到 2019 年之后的安装包。</li>
+          <li><a href="https://www.appchina.com/" target="_blank" rel="noopener">应用汇</a>：安卓侧老版本存档，包名 <code>com.netease.x19</code>。</li>
+          <li><a href="https://apkpure.com/cn/search?q=%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C" target="_blank" rel="noopener">APKPure</a>：国际站，网易版旧版本偶有收录，下载前看包名和签名。</li>
+        </ul>
+        <p class="warn">第三方存档不是官方渠道，不保证包完整、不保证能登录官服。存档前先备份，别在旧版本里做什么不可逆的操作。</p>
+      </div>
+    </div>
+
+    <div class="nsec">
+      <h2>版本时间线</h2>
+      <p class="sub">查得到版本号与日期的才写进来，来源标在每条后面。</p>
+      <div class="timeline" id="neTimeline"></div>
+    </div>
+  </section>
+
+  <section class="view" id="view-wiki" hidden>
+    <div class="nsec">
+      <h2>维基入口</h2>
+      <p class="sub">版本细节、更新日志、方块与生物改动，以中文维基为准。下面的搜索链接会带版本号直达。</p>
+      <div class="wikigrid">
+        <a class="wikicard" href="https://zh.minecraft.wiki/" target="_blank" rel="noopener">
+          <b>中文 Minecraft Wiki</b><span>zh.minecraft.wiki · 基岩版版本条目与更新日志</span>
+        </a>
+        <a class="wikicard" href="https://zh.minecraft.wiki/index.php?search=%E5%9F%BA%E5%B2%A9%E7%89%88%E7%89%88%E6%9C%AC" target="_blank" rel="noopener">
+          <b>基岩版版本列表</b><span>全部基岩版版本的索引页</span>
+        </a>
+        <a class="wikicard" href="https://minecraft.wiki/w/Bedrock_Edition_version_history" target="_blank" rel="noopener">
+          <b>Bedrock version history</b><span>英文维基的完整版本历史（更全）</span>
+        </a>
+        <a class="wikicard" href="https://feedback.minecraft.net/hc/en-us" target="_blank" rel="noopener">
+          <b>官方更新日志</b><span>feedback.minecraft.net · 每个版本的 changelog</span>
+        </a>
+      </div>
+      <div class="nbox">
+        <p>站点里的每个版本卡都带一个「维基」按钮，点开就是 <code>zh.minecraft.wiki</code> 带着该版本号的搜索结果，不用自己再翻目录。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>MC 版本库 · 只做索引，安装包由第三方版本库托管</span>
+  <span class="dim">请支持正版。安装包仅供学习交流，下载后 24 小时内删除。</span>
+</footer>
+
+<script src="data-versions.js"></script>
+<script src="data-netease.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
